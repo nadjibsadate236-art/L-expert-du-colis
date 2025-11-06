@@ -334,4 +334,143 @@
                             <div>
                                 <p class="font-semibold">${item.name}</p>
                                 <p class="text-sm text-gray-500">Quantité: ${item.quantity}</p>
+                                </div>
+                            <span class="font-medium">${itemTotal.toFixed(2)} €</span>
+                        `;
+                        cartItemsContainer.appendChild(itemElement);
+                    });
+                    checkoutBtn.disabled = false;
+                }
+                
+                // 4. Mettre à jour le total et le badge
+                cartTotalElement.textContent = `${total.toFixed(2)} €`;
+                cartBadge.textContent = totalItems;
+                cartBadge.classList.toggle('hidden', totalItems === 0);
+            }
+
+            /**
+             * Réinitialise le modal à l'étape 1 (Panier)
+             */
+            function resetModalState() {
+                cartContent.classList.remove('hidden');
+                paymentForm.classList.add('hidden');
+                confirmationMsg.classList.add('hidden');
+            }
+
+            /**
+             * Ouvre ou ferme le modal du panier
+             */
+            function toggleCartModal() {
+                cartModal.style.display = cartModal.style.display === 'flex' ? 'none' : 'flex';
+                if (cartModal.style.display === 'flex') {
+                    resetModalState();
+                }
+            }
+
+            // --- Écouteurs d'événements ---
+
+            // Ajout au panier
+            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const pizzaItemElement = e.target.closest('.pizza-item');
+                    const select = pizzaItemElement.querySelector('.pizza-size-select');
+                    const selectedOption = select.options[select.selectedIndex];
+                    
+                    const id = e.target.dataset.id;
+                    const name = e.target.dataset.name;
+                    const price = selectedOption.value;
+                    const sizeName = selectedOption.dataset.sizeName;
+                    
+                    addToCart(id, name, price, sizeName);
+
+                    e.target.classList.add('animate-pulse');
+                    e.target.textContent = "Ajouté !";
+                    setTimeout(() => {
+                        e.target.classList.remove('animate-pulse');
+                        e.target.textContent = "Ajouter";
+                    }, 1000);
+                });
+            });
+
+            // Ouvrir/Fermer le modal
+            cartButton.addEventListener('click', toggleCartModal);
+            closeCartButton.addEventListener('click', toggleCartModal);
+            cartModal.addEventListener('click', (e) => {
+                if (e.target === cartModal) toggleCartModal();
+            });
+
+            // Étape 1: Valider le panier -> Aller au paiement
+            checkoutBtn.addEventListener('click', () => {
+                if(cart.length === 0) return;
+                paymentTotalElement.textContent = cartTotalElement.textContent;
+                cartContent.classList.add('hidden');
+                paymentForm.classList.remove('hidden');
+            });
+
+            // Étape 2: Retourner au panier
+            backToCartBtn.addEventListener('click', () => {
+                paymentForm.classList.add('hidden');
+                cartContent.classList.remove('hidden');
+            });
+
+            // Étape 2: Soumettre le paiement (Simulation) -> Aller à la confirmation
+            submitPaymentBtn.addEventListener('click', () => {
+                submitPaymentBtn.textContent = "Traitement en cours...";
+                submitPaymentBtn.disabled = true;
+
+                setTimeout(() => {
+                    // --- LOGIQUE DE REÇU (Inchangée) ---
+                    
+                    const orderId = 'BN-' + Math.floor(100000 + Math.random() * 900000);
+                    const orderDate = new Date().toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
+                    const orderTotal = cartTotalElement.textContent;
+
+                    const orderNumberEl = document.getElementById('order-number');
+                    const orderDateEl = document.getElementById('order-date');
+                    const receiptItemsContainer = document.getElementById('receipt-items-container');
+                    const receiptTotalEl = document.getElementById('receipt-total');
+
+                    receiptItemsContainer.innerHTML = ''; 
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        const itemElement = document.createElement('div');
+                        itemElement.className = 'flex justify-between text-sm';
+                        itemElement.innerHTML = `
+                            <div>
+                                <p class="font-medium text-gray-800">${item.name}</p>
+                                <p class="text-gray-500">Qté: ${item.quantity}</p>
+                            </div>
+                            <span class="font-medium text-gray-800">${itemTotal.toFixed(2)} €</span>
+                        `;
+                        receiptItemsContainer.appendChild(itemElement);
+                    });
+
+                    orderNumberEl.textContent = orderId;
+                    orderDateEl.textContent = orderDate;
+                    receiptTotalEl.textContent = orderTotal;
+                    
+                    // --- FIN ---
+
+                    paymentForm.classList.add('hidden');
+                    confirmationMsg.classList.remove('hidden');
+                    
+                    cart = [];
+                    updateCartDisplay();
+
+                    submitPaymentBtn.textContent = "Payer (Simulation)";
+                    submitPaymentBtn.disabled = false;
+                }, 1500);
+            });
+
+            // Étape 3: Fermer le message de confirmation
+            closeConfirmationBtn.addEventListener('click', toggleCartModal);
+
+            // Initialiser l'affichage au chargement
+            updateCartDisplay();
+        });
+    </script>
+
+</body>
+</html>
                                 
