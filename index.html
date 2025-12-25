@@ -3,474 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pizzeria Bella Notte - Notre Menu</title>
-    <!-- Chargement de Tailwind CSS -->
+    <title>L'Expert du Colis - Livraison de Proximité</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- PAS BESOIN DE FONT AWESOME -->
-    <!-- Police Inter -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        #cart-badge {
-            transform: scale(0.8) translate(50%, -50%);
-            transform-origin: top right;
-        }
-        #cart-modal {
-            display: none;
-        }
-        /* Style pour l'icône de l'accordéon (maintenant un <span>) */
-        .accordion-icon {
-            transition: transform 0.3s ease;
-            display: inline-block; /* Nécessaire pour la rotation */
-        }
-        .accordion-header.open .accordion-icon {
-            transform: rotate(180deg);
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
         }
     </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-gray-50 text-gray-900">
 
-    <!-- Barre de Navigation -->
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <div class="flex-shrink-0 flex items-center">
-                    <span class="text-2xl font-bold text-red-600">🍕 Bella Notte</span>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-blue-900 p-2 rounded-lg">
+                        <i class="fas fa-box-open text-orange-500 text-xl"></i>
+                    </div>
+                    <span class="text-xl font-bold text-blue-900">L'Expert du Colis</span>
                 </div>
-                <div class="flex items-center">
-                    <button id="cart-button" class="relative bg-gray-100 p-2 rounded-full text-gray-600 hover:text-gray-800 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                        <span class="sr-only">Voir le panier</span>
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0_0_24_24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                        <span id="cart-badge" class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">0</span>
-                    </button>
+                <div class="hidden md:flex space-x-8 font-medium">
+                    <a href="#services" class="hover:text-blue-600 transition">Services</a>
+                    <a href="#tarifs" class="hover:text-blue-600 transition">Tarifs</a>
+                    <a href="#contact" class="bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Contenu Principal : Menu (Accordéon) -->
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 class="text-3xl font-bold text-gray-900 mb-8">Notre Menu</h1>
-
-        <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-            <!-- Catégorie 1: Les Traditionnelles -->
-            <div>
-                <button class="accordion-header flex justify-between items-center w-full p-6 bg-gray-50 border-b cursor-pointer open">
-                    <h2 class="text-2xl font-semibold text-gray-800">Les Traditionnelles</h2>
-                    <!-- MODIFICATION ICI: Remplacement de l'icône par un simple 'V' -->
-                    <span class="accordion-icon text-gray-500 font-bold">V</span>
-                </button>
-                <div class="accordion-content p-6 space-y-4">
-                    <!-- Pizza 1: Margherita -->
-                    <div class="pizza-item flex flex-col sm:flex-row justify-between sm:items-center p-4 border rounded-lg">
-                        <div class="flex-grow">
-                            <h3 class="text-xl font-semibold text-gray-900" data-name="Margherita">Margherita</h3>
-                            <p class="text-gray-600 text-sm">Tomate, double fromage, olives, origan</p>
-                        </div>
-                        <div class="flex items-center space-x-3 mt-3 sm:mt-0">
-                            <select class="pizza-size-select block w-40 pl-3 pr-8 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                <option value="5.00" data-size-name="Mini">Mini - 5,00 €</option>
-                                <option value="7.00" data-size-name="Moyenne" selected>Moyenne - 7,00 €</option>
-                                <option value="11.00" data-size-name="Grande">Grande - 11,00 €</option>
-                            </select>
-                            <button class="add-to-cart-btn bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors flex-shrink-0"
-                                    data-id="1" data-name="Margherita">
-                                Ajouter
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Pizza 2: Reine -->
-                    <div class="pizza-item flex flex-col sm:flex-row justify-between sm:items-center p-4 border rounded-lg">
-                        <div class="flex-grow">
-                            <h3 class="text-xl font-semibold text-gray-900" data-name="Reine">Reine</h3>
-                            <p class="text-gray-600 text-sm">Tomate, fromage, épaule, champignons, olives</p>
-                        </div>
-                        <div class="flex items-center space-x-3 mt-3 sm:mt-0">
-                            <select class="pizza-size-select block w-40 pl-3 pr-8 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                <option value="6.00" data-size-name="Mini">Mini - 6,00 €</option>
-                                <option value="9.00" data-size-name="Moyenne" selected>Moyenne - 9,00 €</option>
-                                <option value="13.00" data-size-name="Grande">Grande - 13,00 €</option>
-                            </select>
-                            <button class="add-to-cart-btn bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors flex-shrink-0"
-                                    data-id="2" data-name="Reine">
-                                Ajouter
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Catégorie 2: Les Spécialités (base crème) -->
-            <div>
-                <button class="accordion-header flex justify-between items-center w-full p-6 bg-gray-50 border-b cursor-pointer">
-                    <h2 class="text-2xl font-semibold text-gray-800">Les Spécialités (base crème fraîche)</h2>
-                    <!-- MODIFICATION ICI: Remplacement de l'icône par un simple 'V' -->
-                    <span class="accordion-icon text-gray-500 font-bold">V</span>
-                </button>
-                <div class="accordion-content p-6 space-y-4 hidden">
-                    <!-- Pizza 4: Flamenkuche -->
-                    <div class="pizza-item flex flex-col sm:flex-row justify-between sm:items-center p-4 border rounded-lg">
-                        <div class="flex-grow">
-                            <h3 class="text-xl font-semibold text-gray-900" data-name="Flamenkuche">Flamenkuche</h3>
-                            <p class="text-gray-600 text-sm">Crème fraîche, oignons, lardons, fromage</p>
-                        </div>
-                        <div class="flex items-center space-x-3 mt-3 sm:mt-0">
-                            <select class="pizza-size-select block w-40 pl-3 pr-8 py-2 text-base border-gray-300 focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm rounded-md">
-                                <option value="6.50" data-size-name="Mini">Mini - 6,50 €</option>
-                                <option value="10.50" data-size-name="Moyenne" selected>Moyenne - 10,50 €</option>
-                                <option value="14.00" data-size-name="Grande">Grande - 14,00 €</option>
-                            </select>
-                            <button class="add-to-cart-btn bg-red-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-700 transition-colors flex-shrink-0"
-                                    data-id="4" data-name="Flamenkuche">
-                                Ajouter
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    <!-- Hero Section -->
+    <section class="hero-gradient text-white py-20 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Votre partenaire livraison de confiance</h1>
+            <p class="text-xl mb-10 text-blue-100 max-w-2xl mx-auto">
+                Livraison rapide, soignée et professionnelle pour les commerçants de proximité et les particuliers.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#tarifs" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-xl font-bold text-lg transition shadow-lg">Voir les tarifs</a>
+                <a href="#contact" class="bg-white text-blue-900 hover:bg-gray-100 px-8 py-3 rounded-xl font-bold text-lg transition shadow-lg">Demander un devis</a>
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h2 class="text-3xl font-bold text-blue-900 mb-4">Nos Services de Proximité</h2>
+            <div class="h-1 w-20 bg-orange-500 mx-auto rounded-full"></div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="w-12 h-12 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mb-6 text-2xl">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Pour les Commerçants</h3>
+                <p class="text-gray-600 leading-relaxed">Externalisez vos livraisons locales. Nous livrons vos clients en moins de 30 minutes dans votre zone.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-6 text-2xl">
+                    <i class="fas fa-bicycle"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Livraison Express</h3>
+                <p class="text-gray-600 leading-relaxed">Besoin d'envoyer un document ou un petit colis en urgence ? Nous intervenons immédiatement.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
+                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6 text-2xl">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Garantie Sécurité</h3>
+                <p class="text-gray-600 leading-relaxed">Chaque colis est manipulé avec le plus grand soin. Ponctualité et intégrité garanties.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tarifs -->
+    <section id="tarifs" class="bg-blue-900 py-20 px-4 text-white">
+        <div class="max-w-7xl mx-auto text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4">Tarification Transparente</h2>
+            <p class="text-blue-200">Des prix simples, sans frais cachés.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- Tarif Standard -->
+            <div class="bg-white text-gray-900 rounded-3xl p-8 shadow-xl transform hover:-translate-y-2 transition duration-300">
+                <h3 class="text-lg font-bold text-blue-900 mb-2 uppercase tracking-widest">Local</h3>
+                <div class="flex items-baseline mb-6">
+                    <span class="text-5xl font-extrabold">5€</span>
+                    <span class="text-gray-500 ml-2">/course</span>
+                </div>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Rayon de 3 km</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Jusqu'à 5 kg</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Remis en main propre</li>
+                </ul>
+                <a href="#contact" class="block text-center border-2 border-blue-900 text-blue-900 py-3 rounded-xl font-bold hover:bg-blue-900 hover:text-white transition">Commander</a>
+            </div>
+
+            <!-- Tarif Pro (Best Seller) -->
+            <div class="bg-orange-500 text-white rounded-3xl p-8 shadow-xl transform scale-105 border-4 border-orange-400">
+                <div class="bg-white text-orange-500 text-xs font-bold px-3 py-1 rounded-full inline-block mb-4 uppercase">Populaire</div>
+                <h3 class="text-lg font-bold mb-2 uppercase tracking-widest">Ville</h3>
+                <div class="flex items-baseline mb-6">
+                    <span class="text-5xl font-extrabold">8€</span>
+                    <span class="text-orange-100 ml-2">/course</span>
+                </div>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center"><i class="fas fa-check text-white mr-3"></i> Toute la ville</li>
+                    <li class="flex items-center"><i class="fas fa-check text-white mr-3"></i> Jusqu'à 10 kg</li>
+                    <li class="flex items-center"><i class="fas fa-check text-white mr-3"></i> Suivi SMS gratuit</li>
+                </ul>
+                <a href="#contact" class="block text-center bg-white text-orange-500 py-3 rounded-xl font-bold hover:bg-orange-100 transition shadow-lg">Commander</a>
+            </div>
+
+            <!-- Pack Magasin -->
+            <div class="bg-white text-gray-900 rounded-3xl p-8 shadow-xl transform hover:-translate-y-2 transition duration-300">
+                <h3 class="text-lg font-bold text-blue-900 mb-2 uppercase tracking-widest">Abonnement</h3>
+                <div class="flex items-baseline mb-2">
+                    <span class="text-3xl font-extrabold">Sur devis</span>
+                </div>
+                <p class="text-gray-500 mb-6 italic text-sm">Spécial Commerçants</p>
+                <ul class="space-y-4 mb-8">
+                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Facturation mensuelle</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Volume illimité</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Priorité maximale</li>
+                </ul>
+                <a href="#contact" class="block text-center border-2 border-blue-900 text-blue-900 py-3 rounded-xl font-bold hover:bg-blue-900 hover:text-white transition">Nous contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-4">
+        <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-lg p-10 border border-gray-100">
+            <h2 class="text-3xl font-bold text-center text-blue-900 mb-8">Prêt à livrer ?</h2>
+            <form id="contactForm" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Nom Complet</label>
+                        <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition outline-none" placeholder="Votre nom">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">Téléphone</label>
+                        <input type="tel" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition outline-none" placeholder="06 00 00 00 00">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Type de demande</label>
+                    <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition outline-none">
+                        <option>Partenariat Magasin</option>
+                        <option>Course unique</option>
+                        <option>Autre demande</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold mb-2">Votre Message</label>
+                    <textarea class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition outline-none h-32" placeholder="Expliquez-nous votre besoin..."></textarea>
+                </div>
+                <button type="button" onclick="sendMessage()" class="w-full bg-blue-900 text-white py-4 rounded-xl font-bold hover:bg-blue-800 transition text-lg shadow-lg">
+                    Envoyer ma demande
+                </button>
+            </form>
+            <div id="messageBox" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-xl text-center font-medium">
+                Votre demande a bien été envoyée ! Nous vous recontacterons très vite.
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-white mt-12 border-t border-gray-200">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center text-gray-500 text-sm">
-            <p>&copy; 2025 Pizzeria Bella Notte. Tous droits réservés.</p>
+    <footer class="bg-gray-100 py-10 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex items-center justify-center gap-2 mb-4">
+                <div class="bg-blue-900 p-1.5 rounded-md">
+                    <i class="fas fa-box-open text-orange-500"></i>
+                </div>
+                <span class="text-xl font-bold text-blue-900">L'Expert du Colis</span>
+            </div>
+            <p class="text-gray-500 mb-4 italic">Qu'Allah facilite votre commerce et vos livraisons.</p>
+            <div class="text-sm text-gray-400">
+                &copy; 2025 L'Expert du Colis - Tous droits réservés.
+            </div>
         </div>
     </footer>
 
-    <!-- Modal Panier -->
-    <div id="cart-modal" class="fixed inset-0 bg-gray-600 bg-opacity-75 flex items-center justify-center z-50 overflow-y-auto py-10">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
-            
-            <!-- 1. Contenu du Panier (Étape 1) -->
-            <div id="cart-content">
-                <div class="flex justify-between items-center p-4 border-b">
-                    <h2 class="text-2xl font-semibold">Votre Panier</h2>
-                    <button id="close-cart-btn" class="text-gray-400 hover:text-gray-600">
-                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0_0_24_24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <!-- Conteneur vide qui sera rempli par le JS (corrigé) -->
-                <div id="cart-items-container" class="p-6 max-h-64 overflow-y-auto">
-                    <!-- Contenu géré par JavaScript -->
-                </div>
-                <div class="p-6 bg-gray-50 rounded-b-lg">
-                    <div class="flex justify-between items-center mb-4">
-                        <span class="text-lg font-medium text-gray-900">Total</span>
-                        <span id="cart-total" class="text-2xl font-bold text-gray-900">0,00 €</span>
-                    </div>
-                    <button id="checkout-btn" class="w-full bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors disabled:opacity-50" disabled>
-                        Valider la commande
-                    </button>
-                </div>
-            </div>
-
-            <!-- 2. Formulaire de Paiement (Étape 2 - Simulation) -->
-            <div id="payment-form" class="hidden">
-                <div class="flex justify-between items-center p-4 border-b">
-                    <h2 class="text-2xl font-semibold">Paiement</h2>
-                    <button id="back-to-cart-btn" class="text-sm text-gray-600 hover:text-gray-900">&larr; Retour au panier</button>
-                </div>
-                <div class="p-6">
-                    <p class="mb-4 text-gray-700">Total à payer : <span id="payment-total" class="font-bold text-xl text-gray-900">0,00 €</span></p>
-                    <div class="space-y-4">
-                        <div>
-                            <label for="card-name" class="block text-sm font-medium text-gray-700">Nom sur la carte</label>
-                            <input type="text" id="card-name" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" placeholder="Jean Dupont">
-                        </div>
-                        <div>
-                            <label for="card-number" class="block text-sm font-medium text-gray-700">Numéro de carte</Dlabel>
-                            <input type="text" id="card-number" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" placeholder="0000 0000 0000 0000">
-                        </div>
-                        <div class="flex space-x-4">
-                            <div class="flex-1">
-                                <label for="card-expiry" class="block text-sm font-medium text-gray-700">Expiration (MM/AA)</label>
-                                <input type="text" id="card-expiry" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" placeholder="MM/AA">
-                            </div>
-                            <div class="flex-1">
-                                <label for="card-cvc" class="block text-sm font-medium text-gray-700">CVC</label>
-                                <input type="text" id="card-cvc" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500" placeholder="123">
-                            </div>
-                        </div>
-                        <div class="pt-4">
-                            <button id="submit-payment-btn" class="w-full bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
-                                Payer (Simulation)
-                            </button>
-                        </div>
-                    </div>
-                    <p class="text-xs text-gray-500 mt-4 text-center">Ceci est une simulation. Aucune donnée ne sera envoyée.</p>
-                </div>
-            </div>
-
-            <!-- 3. Message de confirmation et Reçu (Étape 3) -->
-            <div id="confirmation-msg" class="hidden p-6 md:p-8">
-                <div class="text-center">
-                    <svg class="h-12 w-12 text-green-500 mx-auto" fill="none" stroke="currentColor" viewBox="0_0_24_24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    <h2 class="text-2xl font-semibold mt-4 mb-2 text-gray-900">Merci pour votre commande !</h2>
-                    <p class="text-gray-600 mb-6">Votre commande est en cours de préparation. Bon appétit !</p>
-                </div>
-
-                <!-- Reçu de commande -->
-                <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-3">Votre reçu</h3>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">N° de commande :</span>
-                            <span id="order-number" class="font-medium text-gray-900"></span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-500">Date :</span>
-                            <span id="order-date" class="font-medium text-gray-900"></span>
-                        </div>
-                    </div>
-                    
-                    <hr class="my-3">
-                    
-                    <!-- Articles du reçu -->
-                    <div id="receipt-items-container" class="space-y-2 max-h-32 overflow-y-auto">
-                        <!-- Les articles du reçu seront injectés ici par JS -->
-                    </div>
-                    
-                    <hr class="my-3">
-
-                    <!-- Total du reçu -->
-                    <div class="flex justify-between items-center mt-3">
-                        <span class="text-base font-medium text-gray-900">Total payé</span>
-                        <span id="receipt-total" class="text-xl font-bold text-gray-900">0,00 €</span>
-                    </div>
-                </div>
-
-                <button id="close-confirmation-btn" class="w-full mt-6 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg font-medium hover:bg-gray-300 transition-colors">
-                    Fermer
-                </button>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- JavaScript pour la logique du panier -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // État du panier
-            let cart = [];
-
-            // --- Logique de l'accordéon ---
-            const accordionHeaders = document.querySelectorAll('.accordion-header');
-            accordionHeaders.forEach(header => {
-                header.addEventListener('click', () => {
-                    const content = header.nextElementSibling;
-                    header.classList.toggle('open');
-                    content.classList.toggle('hidden');
-                });
-            });
-
-            // --- Éléments du DOM pour le Panier ---
-            const cartButton = document.getElementById('cart-button');
-            const cartModal = document.getElementById('cart-modal');
-            const closeCartButton = document.getElementById('close-cart-btn');
-            const cartItemsContainer = document.getElementById('cart-items-container');
-            const cartTotalElement = document.getElementById('cart-total');
-            const cartBadge = document.getElementById('cart-badge');
-            const checkoutBtn = document.getElementById('checkout-btn');
+        function sendMessage() {
+            const form = document.getElementById('contactForm');
+            const box = document.getElementById('messageBox');
             
-            const cartContent = document.getElementById('cart-content');
-            const paymentForm = document.getElementById('payment-form');
-            const confirmationMsg = document.getElementById('confirmation-msg');
-
-            const backToCartBtn = document.getElementById('back-to-cart-btn');
-            const submitPaymentBtn = document.getElementById('submit-payment-btn');
-            const closeConfirmationBtn = document.getElementById('close-confirmation-btn');
-            const paymentTotalElement = document.getElementById('payment-total');
-
-            // --- Fonctions du Panier ---
-
-            /**
-             * Ajoute un article au panier
-             */
-            function addToCart(id, name, price, sizeName) {
-                const uniqueCartId = `${id}-${sizeName}`;
-                const existingItemIndex = cart.findIndex(item => item.id === uniqueCartId);
-                
-                if (existingItemIndex > -1) {
-                    cart[existingItemIndex].quantity += 1;
-                } else {
-                    const displayName = `${name} (${sizeName})`;
-                    cart.push({ id: uniqueCartId, name: displayName, price: parseFloat(price), quantity: 1 });
-                }
-                
-                updateCartDisplay();
-            }
-
-            /**
-             * Met à jour l'affichage du panier (modal et badge)
-             *
-             * **** FONCTION CORRIGÉE ****
-             */
-            function updateCartDisplay() {
-                cartItemsContainer.innerHTML = ''; // 1. Vider le conteneur
-                
-                let total = 0;
-                let totalItems = 0;
-                
-                if (cart.length === 0) {
-                    // 2. Si vide, ajouter le message "panier vide"
-                    cartItemsContainer.innerHTML = '<p class="text-gray-500">Votre panier est vide.</p>';
-                    checkoutBtn.disabled = true;
-                } else {
-                    // 3. Sinon, construire et ajouter les articles
-                    cart.forEach(item => {
-                        const itemTotal = item.price * item.quantity;
-                        total += itemTotal;
-                        totalItems += item.quantity;
-
-                        const itemElement = document.createElement('div');
-                        itemElement.className = 'flex justify-between items-center py-3 border-b';
-                        itemElement.innerHTML = `
-                            <div>
-                                <p class="font-semibold">${item.name}</p>
-                                <p class="text-sm text-gray-500">Quantité: ${item.quantity}</p>
-                                </div>
-                            <span class="font-medium">${itemTotal.toFixed(2)} €</span>
-                        `;
-                        cartItemsContainer.appendChild(itemElement);
-                    });
-                    checkoutBtn.disabled = false;
-                }
-                
-                // 4. Mettre à jour le total et le badge
-                cartTotalElement.textContent = `${total.toFixed(2)} €`;
-                cartBadge.textContent = totalItems;
-                cartBadge.classList.toggle('hidden', totalItems === 0);
-            }
-
-            /**
-             * Réinitialise le modal à l'étape 1 (Panier)
-             */
-            function resetModalState() {
-                cartContent.classList.remove('hidden');
-                paymentForm.classList.add('hidden');
-                confirmationMsg.classList.add('hidden');
-            }
-
-            /**
-             * Ouvre ou ferme le modal du panier
-             */
-            function toggleCartModal() {
-                cartModal.style.display = cartModal.style.display === 'flex' ? 'none' : 'flex';
-                if (cartModal.style.display === 'flex') {
-                    resetModalState();
-                }
-            }
-
-            // --- Écouteurs d'événements ---
-
-            // Ajout au panier
-            const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
-            addToCartButtons.forEach(button => {
-                button.addEventListener('click', (e) => {
-                    const pizzaItemElement = e.target.closest('.pizza-item');
-                    const select = pizzaItemElement.querySelector('.pizza-size-select');
-                    const selectedOption = select.options[select.selectedIndex];
-                    
-                    const id = e.target.dataset.id;
-                    const name = e.target.dataset.name;
-                    const price = selectedOption.value;
-                    const sizeName = selectedOption.dataset.sizeName;
-                    
-                    addToCart(id, name, price, sizeName);
-
-                    e.target.classList.add('animate-pulse');
-                    e.target.textContent = "Ajouté !";
-                    setTimeout(() => {
-                        e.target.classList.remove('animate-pulse');
-                        e.target.textContent = "Ajouter";
-                    }, 1000);
-                });
-            });
-
-            // Ouvrir/Fermer le modal
-            cartButton.addEventListener('click', toggleCartModal);
-            closeCartButton.addEventListener('click', toggleCartModal);
-            cartModal.addEventListener('click', (e) => {
-                if (e.target === cartModal) toggleCartModal();
-            });
-
-            // Étape 1: Valider le panier -> Aller au paiement
-            checkoutBtn.addEventListener('click', () => {
-                if(cart.length === 0) return;
-                paymentTotalElement.textContent = cartTotalElement.textContent;
-                cartContent.classList.add('hidden');
-                paymentForm.classList.remove('hidden');
-            });
-
-            // Étape 2: Retourner au panier
-            backToCartBtn.addEventListener('click', () => {
-                paymentForm.classList.add('hidden');
-                cartContent.classList.remove('hidden');
-            });
-
-            // Étape 2: Soumettre le paiement (Simulation) -> Aller à la confirmation
-            submitPaymentBtn.addEventListener('click', () => {
-                submitPaymentBtn.textContent = "Traitement en cours...";
-                submitPaymentBtn.disabled = true;
-
-                setTimeout(() => {
-                    // --- LOGIQUE DE REÇU (Inchangée) ---
-                    
-                    const orderId = 'BN-' + Math.floor(100000 + Math.random() * 900000);
-                    const orderDate = new Date().toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' });
-                    const orderTotal = cartTotalElement.textContent;
-
-                    const orderNumberEl = document.getElementById('order-number');
-                    const orderDateEl = document.getElementById('order-date');
-                    const receiptItemsContainer = document.getElementById('receipt-items-container');
-                    const receiptTotalEl = document.getElementById('receipt-total');
-
-                    receiptItemsContainer.innerHTML = ''; 
-                    cart.forEach(item => {
-                        const itemTotal = item.price * item.quantity;
-                        const itemElement = document.createElement('div');
-                        itemElement.className = 'flex justify-between text-sm';
-                        itemElement.innerHTML = `
-                            <div>
-                                <p class="font-medium text-gray-800">${item.name}</p>
-                                <p class="text-gray-500">Qté: ${item.quantity}</p>
-                            </div>
-                            <span class="font-medium text-gray-800">${itemTotal.toFixed(2)} €</span>
-                        `;
-                        receiptItemsContainer.appendChild(itemElement);
-                    });
-
-                    orderNumberEl.textContent = orderId;
-                    orderDateEl.textContent = orderDate;
-                    receiptTotalEl.textContent = orderTotal;
-                    
-                    // --- FIN ---
-
-                    paymentForm.classList.add('hidden');
-                    confirmationMsg.classList.remove('hidden');
-                    
-                    cart = [];
-                    updateCartDisplay();
-
-                    submitPaymentBtn.textContent = "Payer (Simulation)";
-                    submitPaymentBtn.disabled = false;
-                }, 1500);
-            });
-
-            // Étape 3: Fermer le message de confirmation
-            closeConfirmationBtn.addEventListener('click', toggleCartModal);
-
-            // Initialiser l'affichage au chargement
-            updateCartDisplay();
-        });
+            // Simulation d'envoi
+            form.style.display = 'none';
+            box.classList.remove('hidden');
+            
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+        }
     </script>
-
 </body>
 </html>
-                                
