@@ -3,204 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>L'Expert du Colis - Livraison de Proximité</title>
+    <title>L'Expert du Colis - Livraison Express à la Réunion</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        }
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .hero-gradient { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background-color: #25d366; color: white; border-radius: 50px; padding: 15px 25px; z-index: 100; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900">
 
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
+    <a href="https://wa.me/0693531480" class="whatsapp-float flex items-center gap-2 hover:scale-105 transition shadow-lg">
+        <i class="fab fa-whatsapp text-2xl"></i>
+        <span class="font-bold hidden md:inline">Contact Express</span>
+    </a>
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 items-center">
-                <div class="flex items-center gap-2">
-                    <div class="bg-blue-900 p-2 rounded-lg">
-                        <i class="fas fa-box-open text-orange-500 text-xl"></i>
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-3">
+                    <div class="bg-blue-900 p-2.5 rounded-xl">
+                        <i class="fas fa-box-open text-orange-500 text-2xl"></i>
                     </div>
-                    <span class="text-xl font-bold text-blue-900">L'Expert du Colis</span>
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-black text-blue-900 leading-none tracking-tight">L'EXPERT DU COLIS</span>
+                        <span class="text-xs font-bold text-orange-500 uppercase tracking-widest">Livraison Pro & Rapide</span>
+                    </div>
                 </div>
-                <div class="hidden md:flex space-x-8 font-medium">
-                    <a href="#services" class="hover:text-blue-600 transition">Services</a>
-                    <a href="#tarifs" class="hover:text-blue-600 transition">Tarifs</a>
-                    <a href="#contact" class="bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition">Contact</a>
+                <div class="hidden md:flex space-x-8 font-semibold items-center">
+                    <a href="#services" class="text-gray-600 hover:text-blue-900 transition">Services</a>
+                    <a href="#tarifs" class="text-gray-600 hover:text-blue-900 transition">Tarifs</a>
+                    <a href="#contact" class="bg-blue-900 text-white px-6 py-2.5 rounded-full hover:bg-orange-500 transition-all duration-300">Demander un devis</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-gradient text-white py-20 px-4">
-        <div class="max-w-7xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Votre partenaire livraison de confiance</h1>
-            <p class="text-xl mb-10 text-blue-100 max-w-2xl mx-auto">
-                Livraison rapide, soignée et professionnelle pour les commerçants de proximité et les particuliers.
+    <section class="hero-gradient text-white py-24 px-4 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto flex flex-col items-center text-center relative z-10">
+            <span class="bg-blue-800/50 text-orange-300 px-4 py-1 rounded-full text-sm font-bold mb-6 border border-blue-700">Service disponible à Saint-Pierre et alentours</span>
+            <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">La course de proximité<br><span class="text-orange-400 italic">réinventée.</span></h1>
+            <p class="text-xl mb-12 text-blue-100 max-w-2xl font-light leading-relaxed">
+                Professionnels et particuliers, externalisez vos livraisons. Rapidité, soin et courtoisie à chaque kilomètre.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#tarifs" class="bg-orange-500 hover:bg-orange-600 text-white px-8 py-3 rounded-xl font-bold text-lg transition shadow-lg">Voir les tarifs</a>
-                <a href="#contact" class="bg-white text-blue-900 hover:bg-gray-100 px-8 py-3 rounded-xl font-bold text-lg transition shadow-lg">Demander un devis</a>
+            <div class="flex flex-col sm:flex-row justify-center gap-6 w-full max-w-md">
+                <a href="#tarifs" class="bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-2xl font-black text-lg transition-all transform hover:-translate-y-1 shadow-2xl">NOS TARIFS</a>
+                <a href="#contact" class="bg-white text-blue-900 hover:bg-gray-100 px-10 py-4 rounded-2xl font-black text-lg transition-all transform hover:-translate-y-1 shadow-2xl">DEVIS GRATUIT</a>
             </div>
         </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto text-center mb-16">
-            <h2 class="text-3xl font-bold text-blue-900 mb-4">Nos Services de Proximité</h2>
-            <div class="h-1 w-20 bg-orange-500 mx-auto rounded-full"></div>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <div class="w-12 h-12 bg-blue-100 text-blue-900 rounded-full flex items-center justify-center mb-6 text-2xl">
-                    <i class="fas fa-store"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-3">Pour les Commerçants</h3>
-                <p class="text-gray-600 leading-relaxed">Externalisez vos livraisons locales. Nous livrons vos clients en moins de 30 minutes dans votre zone.</p>
+    <section id="services" class="py-24 px-4 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-black text-blue-900 mb-4">Pourquoi nous choisir ?</h2>
+                <div class="h-1.5 w-24 bg-orange-500 mx-auto rounded-full"></div>
             </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center mb-6 text-2xl">
-                    <i class="fas fa-bicycle"></i>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="group bg-gray-50 p-10 rounded-3xl hover:bg-blue-900 hover:text-white transition-all duration-500 border-b-8 border-orange-500 shadow-sm">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-2xl flex items-center justify-center mb-8 text-3xl group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic">Vitesse Éclair</h3>
+                    <p class="text-gray-500 group-hover:text-blue-100 leading-relaxed">Une prise en charge immédiate pour vos besoins urgents. Le temps, c'est votre business, nous le respectons.</p>
                 </div>
-                <h3 class="text-xl font-bold mb-3">Livraison Express</h3>
-                <p class="text-gray-600 leading-relaxed">Besoin d'envoyer un document ou un petit colis en urgence ? Nous intervenons immédiatement.</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition">
-                <div class="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6 text-2xl">
-                    <i class="fas fa-shield-alt"></i>
+                <div class="group bg-gray-50 p-10 rounded-3xl hover:bg-blue-900 hover:text-white transition-all duration-500 border-b-8 border-blue-700 shadow-sm">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-2xl flex items-center justify-center mb-8 text-3xl group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic">Confiance Totale</h3>
+                    <p class="text-gray-500 group-hover:text-blue-100 leading-relaxed">Nous représentons votre enseigne auprès de vos clients. Une présentation soignée et un sourire garantis.</p>
                 </div>
-                <h3 class="text-xl font-bold mb-3">Garantie Sécurité</h3>
-                <p class="text-gray-600 leading-relaxed">Chaque colis est manipulé avec le plus grand soin. Ponctualité et intégrité garanties.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tarifs -->
-    <section id="tarifs" class="bg-blue-900 py-20 px-4 text-white">
-        <div class="max-w-7xl mx-auto text-center mb-16">
-            <h2 class="text-3xl font-bold mb-4">Tarification Transparente</h2>
-            <p class="text-blue-200">Des prix simples, sans frais cachés.</p>
-        </div>
-        <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            <!-- Tarif Standard -->
-            <div class="bg-white text-gray-900 rounded-3xl p-8 shadow-xl transform hover:-translate-y-2 transition duration-300">
-                <h3 class="text-lg font-bold text-blue-900 mb-2 uppercase tracking-widest">Local</h3>
-                <div class="flex items-baseline mb-6">
-                    <span class="text-5xl font-extrabold">5€</span>
-                    <span class="text-gray-500 ml-2">/course</span>
+                <div class="group bg-gray-50 p-10 rounded-3xl hover:bg-blue-900 hover:text-white transition-all duration-500 border-b-8 border-orange-500 shadow-sm">
+                    <div class="w-16 h-16 bg-blue-100 text-blue-900 rounded-2xl flex items-center justify-center mb-8 text-3xl group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 italic">Traçabilité</h3>
+                    <p class="text-gray-500 group-hover:text-blue-100 leading-relaxed">Confirmation de livraison en temps réel par SMS. Vous ne perdez jamais de vue votre colis.</p>
                 </div>
-                <ul class="space-y-4 mb-8">
-                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Rayon de 3 km</li>
-                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Jusqu'à 5 kg</li>
-                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Remis en main propre</li>
-                </ul>
-                <a href="#contact" class="block text-center border-2 border-blue-900 text-blue-900 py-3 rounded-xl font-bold hover:bg-blue-900 hover:text-white transition">Commander</a>
-            </div>
-
-            <!-- Tarif Pro (Best Seller) -->
-            <div class="bg-orange-500 text-white rounded-3xl p-8 shadow-xl transform scale-105 border-4 border-orange-400">
-                <div class="bg-white text-orange-500 text-xs font-bold px-3 py-1 rounded-full inline-block mb-4 uppercase">Populaire</div>
-                <h3 class="text-lg font-bold mb-2 uppercase tracking-widest">Ville</h3>
-                <div class="flex items-baseline mb-6">
-                    <span class="text-5xl font-extrabold">8€</span>
-                    <span class="text-orange-100 ml-2">/course</span>
-                </div>
-                <ul class="space-y-4 mb-8">
-                    <li class="flex items-center"><i class="fas fa-check text-white mr-3"></i> Toute la ville</li>
-                    <li class="flex items-center"><i class="fas fa-check text-white mr-3"></i> Jusqu'à 10 kg</li>
-                    <li class="flex items-center"><i class="fas fa-check text-white mr-3"></i> Suivi SMS gratuit</li>
-                </ul>
-                <a href="#contact" class="block text-center bg-white text-orange-500 py-3 rounded-xl font-bold hover:bg-orange-100 transition shadow-lg">Commander</a>
-            </div>
-
-            <!-- Pack Magasin -->
-            <div class="bg-white text-gray-900 rounded-3xl p-8 shadow-xl transform hover:-translate-y-2 transition duration-300">
-                <h3 class="text-lg font-bold text-blue-900 mb-2 uppercase tracking-widest">Abonnement</h3>
-                <div class="flex items-baseline mb-2">
-                    <span class="text-3xl font-extrabold">Sur devis</span>
-                </div>
-                <p class="text-gray-500 mb-6 italic text-sm">Spécial Commerçants</p>
-                <ul class="space-y-4 mb-8">
-                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Facturation mensuelle</li>
-                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Volume illimité</li>
-                    <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Priorité maximale</li>
-                </ul>
-                <a href="#contact" class="block text-center border-2 border-blue-900 text-blue-900 py-3 rounded-xl font-bold hover:bg-blue-900 hover:text-white transition">Nous contacter</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-4">
-        <div class="max-w-3xl mx-auto bg-white rounded-3xl shadow-lg p-10 border border-gray-100">
-            <h2 class="text-3xl font-bold text-center text-blue-900 mb-8">Prêt à livrer ?</h2>
-            <form id="contactForm" class="space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
+    <section id="tarifs" class="bg-gray-900 py-24 px-4 text-white relative">
+        <div class="max-w-7xl mx-auto text-center mb-20">
+            <h2 class="text-4xl font-black mb-4 uppercase tracking-tighter text-orange-400">Tarification Directe</h2>
+            <p class="text-gray-400 text-lg">Simple, transparent, local.</p>
+        </div>
+        <div class="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-10 border border-white/10 hover:border-orange-500 transition shadow-2xl">
+                <h3 class="text-xl font-bold text-orange-400 mb-6 uppercase tracking-widest text-center">Ultra Local</h3>
+                <div class="text-center mb-8">
+                    <span class="text-6xl font-black">5€</span>
+                    <span class="text-gray-400 block mt-2 italic">Rayon de 3 km</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-sm">
+                    <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> Saint-Pierre Centre</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> Charge < 5kg</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> Livraison < 20 min</li>
+                </ul>
+                <a href="#contact" class="block text-center bg-orange-500 text-white py-4 rounded-2xl font-black hover:bg-orange-600 transition">RÉSERVER</a>
+            </div>
+            <div class="bg-blue-800 rounded-3xl p-10 border-4 border-orange-500 transform lg:scale-110 shadow-2xl relative">
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-6 py-1 rounded-full text-xs font-black uppercase tracking-widest">Le plus prisé</div>
+                <h3 class="text-xl font-bold text-white mb-6 uppercase tracking-widest text-center">Secteur Ville</h3>
+                <div class="text-center mb-8">
+                    <span class="text-7xl font-black">8€</span>
+                    <span class="text-orange-200 block mt-2 italic">Rayon de 10 km</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-sm">
+                    <li class="flex items-center"><i class="fas fa-check text-orange-300 mr-3"></i> Zone Étendue</li>
+                    <li class="flex items-center"><i class="fas fa-check text-orange-300 mr-3"></i> Charge < 10kg</li>
+                    <li class="flex items-center"><i class="fas fa-check text-orange-300 mr-3"></i> Suivi SMS Inclus</li>
+                </ul>
+                <a href="#contact" class="block text-center bg-white text-blue-900 py-4 rounded-2xl font-black hover:bg-gray-100 transition shadow-lg">RÉSERVER</a>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-3xl p-10 border border-white/10 hover:border-orange-500 transition shadow-2xl">
+                <h3 class="text-xl font-bold text-orange-400 mb-6 uppercase tracking-widest text-center">Business</h3>
+                <div class="text-center mb-8">
+                    <span class="text-4xl font-black">DEVIS</span>
+                    <span class="text-gray-400 block mt-2 italic">Spécial Commerçants</span>
+                </div>
+                <ul class="space-y-4 mb-10 text-sm">
+                    <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> Tournées régulières</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> Facture mensuelle</li>
+                    <li class="flex items-center"><i class="fas fa-check text-green-400 mr-3"></i> Tarifs préférentiels</li>
+                </ul>
+                <a href="#contact" class="block text-center border-2 border-white/50 text-white py-4 rounded-2xl font-black hover:bg-white hover:text-blue-900 transition">CONTACTER</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-4 bg-gray-50">
+        <div class="max-w-4xl mx-auto bg-white rounded-[2.5rem] shadow-2xl p-8 md:p-16 border border-gray-100">
+            <h2 class="text-4xl font-black text-center text-blue-900 mb-4 italic">Une question ? Un colis ?</h2>
+            <p class="text-center text-gray-500 mb-12 uppercase tracking-widest text-sm font-bold">Réponse rapide garantie</p>
+            
+            <form action="https://formsubmit.co/lexpertducolis@lexpert-du-colis.fr" method="POST" class="space-y-6">
+                <input type="hidden" name="_subject" value="Nouveau message - L'Expert du Colis">
+                <input type="hidden" name="_next" value="https://lexpert-du-colis.fr">
+
+                <div class="grid md:grid-cols-2 gap-8">
                     <div>
-                        <label class="block text-sm font-semibold mb-2">Nom Complet</label>
-                        <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition outline-none" placeholder="Votre nom">
+                        <label class="block text-xs font-black uppercase text-blue-900 mb-2">Votre Identité</label>
+                        <input type="text" name="nom" required class="w-full px-6 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-blue-900 focus:bg-white transition outline-none" placeholder="Prénom Nom">
                     </div>
                     <div>
-                        <label class="block text-sm font-semibold mb-2">Téléphone</label>
-                        <input type="tel" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition outline-none" placeholder="06 00 00 00 00">
+                        <label class="block text-xs font-black uppercase text-blue-900 mb-2">Téléphone</label>
+                        <input type="tel" name="phone" required class="w-full px-6 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-blue-900 focus:bg-white transition outline-none" placeholder="06 9x xx xx xx">
                     </div>
                 </div>
                 <div>
-                    <label class="block text-sm font-semibold mb-2">Type de demande</label>
-                    <select class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition outline-none">
-                        <option>Partenariat Magasin</option>
-                        <option>Course unique</option>
-                        <option>Autre demande</option>
-                    </select>
+                    <label class="block text-xs font-black uppercase text-blue-900 mb-2">Votre besoin</label>
+                    <textarea name="message" required class="w-full px-6 py-4 rounded-2xl bg-gray-50 border-2 border-transparent focus:border-blue-900 focus:bg-white transition outline-none h-40" placeholder="Décrivez votre besoin de livraison..."></textarea>
                 </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-2">Votre Message</label>
-                    <textarea class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition outline-none h-32" placeholder="Expliquez-nous votre besoin..."></textarea>
-                </div>
-                <button type="button" onclick="sendMessage()" class="w-full bg-blue-900 text-white py-4 rounded-xl font-bold hover:bg-blue-800 transition text-lg shadow-lg">
-                    Envoyer ma demande
+                <button type="submit" class="w-full bg-blue-900 text-white py-5 rounded-2xl font-black hover:bg-orange-500 transition-all duration-300 text-xl shadow-xl transform hover:scale-[1.02]">
+                    ENVOYER MA DEMANDE
                 </button>
             </form>
-            <div id="messageBox" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-xl text-center font-medium">
-                Votre demande a bien été envoyée ! Nous vous recontacterons très vite.
-            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-100 py-10 px-4">
-        <div class="max-w-7xl mx-auto text-center">
-            <div class="flex items-center justify-center gap-2 mb-4">
-                <div class="bg-blue-900 p-1.5 rounded-md">
-                    <i class="fas fa-box-open text-orange-500"></i>
+    <footer class="bg-white border-t border-gray-100 pt-20 pb-10 px-4">
+        <div class="max-w-7xl mx-auto flex flex-col items-center">
+            <div class="flex items-center gap-4 mb-12">
+                <div class="bg-blue-900 p-3 rounded-2xl">
+                    <i class="fas fa-box-open text-orange-500 text-3xl"></i>
                 </div>
-                <span class="text-xl font-bold text-blue-900">L'Expert du Colis</span>
+                <span class="text-3xl font-black text-blue-900 tracking-tighter">L'EXPERT DU COLIS</span>
             </div>
-            <p class="text-gray-500 mb-4 italic">Qu'Allah facilite votre commerce et vos livraisons.</p>
-            <div class="text-sm text-gray-400">
-                &copy; 2025 L'Expert du Colis - Tous droits réservés.
+            
+            <div class="grid md:grid-cols-2 gap-10 w-full max-w-4xl text-center mb-16 p-8 bg-gray-50 rounded-3xl">
+                <div>
+                    <h4 class="font-black text-blue-900 mb-3 uppercase text-sm">Identité</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Mohamed Sadate Ahmed Nadjib EI<br>
+                        9 Ligne d'Equerre, 97432 Saint-Pierre<br>
+                        SIREN : [A COMPLETER]
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-black text-blue-900 mb-3 uppercase text-sm">Horaires</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Lundi - Vendredi : 08:00 - 18:00<br>
+                        Samedi : 08:00 - 12:00<br>
+                        <em>Qu'Allah bénisse nos commerces</em>
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-gray-400 text-xs text-center border-t border-gray-100 pt-8 w-full max-w-md">
+                &copy; 2026 L'Expert du Colis. Tous droits réservés.
             </div>
         </div>
     </footer>
 
-    <script>
-        function sendMessage() {
-            const form = document.getElementById('contactForm');
-            const box = document.getElementById('messageBox');
-            
-            // Simulation d'envoi
-            form.style.display = 'none';
-            box.classList.remove('hidden');
-            
-            setTimeout(() => {
-                location.reload();
-            }, 3000);
-        }
-    </script>
 </body>
 </html>
